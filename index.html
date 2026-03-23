@@ -4068,22 +4068,16 @@ function toggleAccordion(id) {
 }
 
 function switchTab(article, tab) {
-    // Deactivate all tabs and panels in this article
-    const tabBar = document.getElementById(article + '-tabs');
-    tabBar.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    const panels = ['github','note','x','tiktok','youtube','instagram'];
-    // Deactivate all panels and tab buttons for this article
-    const accordion = document.getElementById('acc-' + article) || document.querySelector('[id*="' + article + '"]');
-    if (accordion) {
-        accordion.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    }
-    panels.forEach(p => {
-        const el = document.getElementById(article + '-' + p);
+    var tabBar = document.getElementById(article + '-tabs');
+    if (!tabBar) return;
+    tabBar.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    ['github','note','x','tiktok','youtube','instagram'].forEach(function(p) {
+        var el = document.getElementById(article + '-' + p);
         if (el) el.classList.remove('active');
     });
-    // Activate clicked tab
-    event.target.classList.add('active');
-    const panel = document.getElementById(article + '-' + tab);
+    var btn = event.target.closest('.tab-btn');
+    if (btn) btn.classList.add('active');
+    var panel = document.getElementById(article + '-' + tab);
     if (panel) panel.classList.add('active');
 }
 
