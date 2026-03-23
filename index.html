@@ -1873,12 +1873,46 @@ https://kanesaka849.github.io/pokano-site/</div><button class="copy-btn" onclick
     </div>
     <div id="note-preview-panel" style="display:none;margin-bottom:20px;border:2px solid #2cb696;border-radius:12px;overflow:hidden;">
         <div style="display:flex;background:#2cb696;padding:8px 16px;gap:10px;">
-            <button onclick="showNoteTab('np-doro')" style="background:#fff;color:#2cb696;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;" id="btn-np-doro">🟤 泥団子</button>
+            <button onclick="showNoteTab('np-love')" style="background:#fff;color:#2cb696;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;" id="btn-np-love">💕 恋まじない</button>
+            <button onclick="showNoteTab('np-doro')" style="background:rgba(255,255,255,0.3);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;" id="btn-np-doro">🟤 泥団子</button>
             <button onclick="showNoteTab('np-soccer')" style="background:rgba(255,255,255,0.3);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;" id="btn-np-soccer">⚽ サッカー</button>
             <button onclick="showNoteTab('np-todai')" style="background:rgba(255,255,255,0.3);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;" id="btn-np-todai">📚 東大</button>
         </div>
         <!-- ===== 泥団子タブ ===== -->
-        <div id="np-doro" style="padding:24px;max-height:600px;overflow-y:auto;font-size:16px;line-height:2.0;font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;">
+        <!-- 恋まじないタブ -->
+        <div id="np-love" style="padding:24px;max-height:600px;overflow-y:auto;font-size:16px;line-height:2.0;font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;">
+            <button onclick="document.getElementById('raw-love').select();document.execCommand('copy');this.textContent='コピー済み ✓';setTimeout(()=>{this.textContent='全文をクリップボードにコピー'},2000)" style="display:block;margin:0 auto 20px;padding:10px 24px;background:#ec4899;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:700;">全文をクリップボードにコピー</button>
+            <textarea id="raw-love" style="position:absolute;left:-9999px;">恋まじないの全文はファイルに保存されています。content/love_spells/note_plaintext.txt</textarea>
+
+            <h2 style="font-size:22px;font-weight:800;margin-bottom:12px;color:#111;">絶対叶える恋まじない AIに徹底調査させてみた</h2>
+            <p style="font-size:14px;color:#ec4899;margin-bottom:16px;">有料記事（¥500）</p>
+
+            <p>好きな人がいる方、こう思ったことはありませんか？</p>
+            <p>「本当に効くおまじないがあったら…」</p>
+            <p>AIに世界中の恋まじないを徹底調査させたら、3000年前のエジプトから現代の韓国まで、人類はずっと同じことをやっていた。</p>
+
+            <h3 style="font-size:18px;margin:20px 0 8px;border-bottom:2px solid #fce7f3;padding-bottom:6px;">なるほど①：世界の恋まじないに共通する3つの原理</h3>
+            <p>自己暗示、儀式効果、コミットメント強化。世界12カ国のまじないを分析したら、全部この3つに集約された。</p>
+
+            <h3 style="font-size:18px;margin:20px 0 8px;border-bottom:2px solid #fce7f3;padding-bottom:6px;">なるほど②：世界12カ国の恋まじない</h3>
+            <p>エジプト（パピルスに呪文）、ギリシャ（アフロディーテへの祈り）、日本（結び文）、韓国（赤い糸）、イギリス（ラブポーション）、ブラジル（聖アントニオ）...</p>
+
+            <h3 style="font-size:18px;margin:20px 0 8px;border-bottom:2px solid #fce7f3;padding-bottom:6px;">今夜からできる！恋まじない5選</h3>
+            <p>満月の夜のローズウォーター、赤い糸を枕の下に、シナモンスティックの願掛け...</p>
+
+            <h3 style="font-size:18px;margin:20px 0 8px;border-bottom:2px solid #fce7f3;padding-bottom:6px;">効いた！伝説と体験談</h3>
+            <p>クレオパトラのローズバス、和泉式部の貴船神社、現代の口コミ...</p>
+
+            <div style="background:linear-gradient(135deg,#ede9fe,#fce7f3);border-radius:12px;padding:20px;text-align:center;margin:20px 0;border:1px solid rgba(124,58,237,0.15);">
+                <h3 style="font-size:18px;color:#7c3aed;">🔒 ここから有料パート（¥500）</h3>
+                <p style="font-size:14px;color:#666;">2026年AIおすすめTOP3、具体的なやり方、科学的分析、やってはいけないまじない</p>
+            </div>
+
+            <p style="text-align:center;color:#999;margin-top:20px;font-size:14px;">全文は content/love_spells/note_plaintext.txt に保存されています</p>
+        </div>
+
+        <!-- 泥団子タブ -->
+        <div id="np-doro" style="display:none;padding:24px;max-height:600px;overflow-y:auto;font-size:16px;line-height:2.0;font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;">
             <button onclick="document.getElementById('raw-doro').select();document.execCommand('copy');this.textContent='コピー済み ✓';setTimeout(()=>{this.textContent='全文をクリップボードにコピー'},2000)" style="display:block;margin:0 auto 20px;padding:10px 24px;background:#2cb696;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:700;">全文をクリップボードにコピー</button>
             <textarea id="raw-doro" style="position:absolute;left:-9999px;">泥団子が光る理由は宝石と同じだった｜AIに泥団子の科学を本気で分析させた
 
@@ -4082,10 +4116,11 @@ function switchTab(article, tab) {
 }
 
 function showNoteTab(id) {
-    ['np-doro','np-soccer','np-todai'].forEach(t => {
-        document.getElementById(t).style.display = t===id ? 'block' : 'none';
-        document.getElementById('btn-'+t).style.background = t===id ? '#fff' : 'rgba(255,255,255,0.3)';
-        document.getElementById('btn-'+t).style.color = t===id ? '#2cb696' : '#fff';
+    ['np-love','np-doro','np-soccer','np-todai'].forEach(t => {
+        var el = document.getElementById(t);
+        var btn = document.getElementById('btn-'+t);
+        if (el) el.style.display = t===id ? 'block' : 'none';
+        if (btn) { btn.style.background = t===id ? '#fff' : 'rgba(255,255,255,0.3)'; btn.style.color = t===id ? '#2cb696' : '#fff'; }
     });
 }
 
