@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>note記事プレビュー — Pokano</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Hiragino Sans','Noto Sans JP','Segoe UI',sans-serif; background:#f5f5f5; color:#333; }
+        .tab-bar { display:flex; background:#fff; border-bottom:2px solid #2cb696; position:sticky; top:0; z-index:10; }
+        .tab { flex:1; padding:14px; text-align:center; font-size:13px; font-weight:700; cursor:pointer; color:#999; border-bottom:3px solid transparent; transition:all 0.2s; }
+        .tab.active { color:#2cb696; border-bottom-color:#2cb696; }
+        .tab:hover { color:#2cb696; }
+        .tab-content { display:none; }
+        .tab-content.active { display:block; }
+
+        /* note風デザイン */
+        .note-container { max-width:620px; margin:0 auto; padding:24px 16px 60px; }
+        .note-header { margin-bottom:24px; }
+        .note-title { font-size:22px; font-weight:800; line-height:1.4; margin-bottom:12px; color:#111; }
+        .note-author { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+        .note-avatar { width:36px; height:36px; border-radius:50%; background:#2cb696; display:flex; align-items:center; justify-content:center; color:#fff; font-size:12px; font-weight:700; }
+        .note-author-name { font-size:13px; font-weight:600; color:#333; }
+        .note-date { font-size:11px; color:#999; }
+
+        .note-body { font-size:15px; line-height:2.0; color:#333; }
+        .note-body p { margin-bottom:16px; }
+        .note-body h2 { font-size:20px; font-weight:800; margin:32px 0 16px; padding-bottom:8px; border-bottom:2px solid #eee; color:#111; }
+        .note-body h3 { font-size:17px; font-weight:700; margin:24px 0 12px; color:#222; }
+        .note-body hr { border:none; border-top:1px solid #eee; margin:24px 0; }
+        .note-body ul, .note-body ol { padding-left:24px; margin-bottom:16px; }
+        .note-body li { margin-bottom:6px; }
+        .note-body strong { color:#111; }
+        .note-body blockquote { border-left:3px solid #2cb696; padding:12px 16px; background:#f8fffe; margin:16px 0; font-style:italic; color:#555; }
+
+        /* 開設記念バナー */
+        .free-banner { background:linear-gradient(135deg,#fef3c7,#fde68a); border-radius:10px; padding:16px; text-align:center; margin-bottom:20px; border:1px solid #f59e0b; }
+        .free-banner .title { font-size:16px; font-weight:800; color:#92400e; margin-bottom:4px; }
+        .free-banner .desc { font-size:12px; color:#a16207; }
+
+        /* 有料ライン */
+        .paid-wall { background:linear-gradient(135deg,#ede9fe,#fce7f3); border-radius:12px; padding:24px; text-align:center; margin:24px 0; border:1px solid rgba(124,58,237,0.15); }
+        .paid-wall h3 { font-size:18px; color:#7c3aed; margin-bottom:8px; }
+        .paid-wall p { font-size:13px; color:#666; margin-bottom:12px; }
+        .paid-wall .price { font-size:24px; font-weight:800; color:#7c3aed; }
+
+        /* 画像プレースホルダー */
+        .img-placeholder { background:#e8ecf0; border-radius:8px; padding:40px 20px; text-align:center; color:#999; font-size:13px; margin:16px 0; border:2px dashed #ccc; }
+
+        /* バイラルCTA */
+        .viral-cta { background:linear-gradient(135deg,#f0fdf4,#ecfdf5); border-radius:12px; padding:20px; margin:24px 0; border:1px solid #86efac; }
+        .viral-cta h3 { font-size:16px; color:#166534; margin-bottom:8px; }
+        .viral-cta p { font-size:13px; color:#555; margin-bottom:4px; }
+
+        /* タグ */
+        .note-tags { display:flex; gap:8px; flex-wrap:wrap; margin:24px 0; }
+        .note-tag { background:#f0f0f0; color:#666; padding:4px 12px; border-radius:16px; font-size:12px; }
+
+        /* ステータスバー */
+        .status-bar { position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:1px solid #eee; padding:10px 16px; text-align:center; font-size:11px; color:#999; z-index:10; }
+        .status-bar strong { color:#2cb696; }
+    </style>
+</head>
+<body>
+
+<!-- Tab Bar -->
+<div class="tab-bar">
+    <div class="tab active" onclick="showTab('dorodango')">🟤 泥団子</div>
+    <div class="tab" onclick="showTab('soccer')">⚽ サッカー</div>
+    <div class="tab" onclick="showTab('todai')">📚 東大</div>
+</div>
+
+<!-- ===== 泥団子 ===== -->
+<div id="dorodango" class="tab-content active">
+<div class="note-container">
+    <div class="note-header">
+        <div class="note-title">泥団子が光る理由は宝石と同じだった｜AIに泥団子の科学を本気で分析させた</div>
+        <div class="note-author">
+            <div class="note-avatar">P</div>
+            <div><div class="note-author-name">Pokano（@pokano_ai）</div><div class="note-date">2026年3月</div></div>
+        </div>
+    </div>
+
+    <div class="free-banner">
+        <div class="title">📢 Pokano開設記念 特別無料公開</div>
+        <div class="desc">この記事は300円相当の内容ですが、Pokano開設記念として無料で全文公開しています。気に入ったらフォローで応援してください🙏</div>
+    </div>
+
+    <div class="note-body">
+        <p>お子さんがいる方、今度こう言ってあげてください。</p>
+        <blockquote>「泥団子が丸くなるのは、地球が丸い理由と同じなんだよ。そして泥団子を磨くと光るのは、ダイヤモンドが光るのと同じ理由なんだよ。」</blockquote>
+        <p>子供の目がキラキラすること間違いなし。そしてこの記事を読めば、なぜそうなるのか科学的に説明できるようになります。</p>
+        <hr>
+        <p>あの…気になるんですけど。</p>
+        <p>子供の頃、泥団子を作って遊んだことがある人、多いと思う。</p>
+        <p>でも、ちょっと待ってほしい。あの泥の塊が、なぜ「丸く」なるのか。なぜ磨くと「光る」のか。考えたこと、ありますか？</p>
+
+        <div class="img-placeholder">[見出し画像: 光る泥団子のイメージ]<br>← Claudeが生成した画像をここにアップ</div>
+
+        <h2>発見1：泥団子が丸くなる理由は、惑星と同じだった</h2>
+        <p>泥団子を手で丸めるとき、実は2つの力が働いています。手の圧力と、水の表面張力。これは惑星に対する重力と同じ役割を果たしている...</p>
+        <p><em>（全文が続く...）</em></p>
+
+        <h2>発見2：磨くと光る理由が、宝石と同じだった</h2>
+        <p>「それはトライボロジー（摩擦学）の原理です」...</p>
+        <p><em>（全文が続く...）</em></p>
+
+        <h2>お子さんと一緒に！5ステップかんたん版</h2>
+        <p>1. 粘土っぽい土を見つけよう → 「握って形が残る土がいい土だよ」</p>
+        <p><em>（全5ステップが続く...）</em></p>
+
+        <h2>AIが設計した「科学的に最強の泥団子」の作り方</h2>
+        <p><em>（フェーズ1〜5の完全版が続く...）</em></p>
+
+        <div class="viral-cta">
+            <h3>🟤 泥団子チャレンジ</h3>
+            <p>作ってみた方、ぜひ見せてください！</p>
+            <p>X or TikTokで <strong>#pokano泥団子</strong> をつけて投稿</p>
+            <p>⚪ Lv.1 まるい ✨ Lv.3 光ってる 💎 Lv.4 鏡面</p>
+        </div>
+
+        <div class="note-tags">
+            <span class="note-tag">#泥団子</span>
+            <span class="note-tag">#自由研究</span>
+            <span class="note-tag">#科学</span>
+            <span class="note-tag">#光る泥だんご</span>
+            <span class="note-tag">#Pokano</span>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- ===== サッカー ===== -->
+<div id="soccer" class="tab-content">
+<div class="note-container">
+    <div class="note-header">
+        <div class="note-title">【AI分析】日本代表W杯2026の最適戦術｜ドイツ・スペイン撃破の教訓から次の勝ち方を設計した</div>
+        <div class="note-author">
+            <div class="note-avatar">P</div>
+            <div><div class="note-author-name">Pokano（@pokano_ai）</div><div class="note-date">2026年3月</div></div>
+        </div>
+    </div>
+
+    <div class="free-banner">
+        <div class="title">📢 Pokano開設記念 特別無料公開</div>
+        <div class="desc">この記事は500円相当の内容ですが、Pokano開設記念として無料で全文公開しています。気に入ったらフォローで応援してください🙏</div>
+    </div>
+
+    <div class="note-body">
+        <p>サッカー好きの皆さん、知っていましたか？</p>
+        <blockquote>2022年W杯で日本がドイツに勝った試合、ポゼッション率は74%を相手に渡していました。スペイン戦は80%。それでも勝った。「ポゼッションが高いほうが勝つ」は嘘だったんです。</blockquote>
+        <p>じゃあ、本当の勝因は何だったのか？AIに分析させたら、意外な答えが出てきました。</p>
+
+        <div class="img-placeholder">[見出し画像: サッカー戦術分析イメージ]</div>
+
+        <h2>発見1：冨安健洋の「偽SB」が全ての鍵</h2>
+        <p>今、世界で最もホットな戦術トレンドの一つが「偽SB（インバーテッド・フルバック）」...</p>
+        <p><em>（全文が続く...）</em></p>
+
+        <h2>完全版戦術プラン</h2>
+        <p><em>（4-2-3-1→3-2-4-1可変システム、プランA/B/C、攻守原則、ゲームステート管理...全文が続く）</em></p>
+
+        <div class="viral-cta">
+            <h3>⚽ あなたの最強フォーメーションは？</h3>
+            <p>Xで <strong>#pokano日本代表</strong> をつけて投稿してください。Pokanoがリポストします！</p>
+        </div>
+
+        <div class="note-tags">
+            <span class="note-tag">#AI分析</span>
+            <span class="note-tag">#日本代表</span>
+            <span class="note-tag">#W杯2026</span>
+            <span class="note-tag">#サッカー戦術</span>
+            <span class="note-tag">#Pokano</span>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- ===== 東大 ===== -->
+<div id="todai" class="tab-content">
+<div class="note-container">
+    <div class="note-header">
+        <div class="note-title">【科学的勉強法】偏差値60から東大に逆転合格する完全戦略｜AIが350論文を分析した結果</div>
+        <div class="note-author">
+            <div class="note-avatar">P</div>
+            <div><div class="note-author-name">Pokano（@pokano_ai）</div><div class="note-date">2026年3月</div></div>
+        </div>
+    </div>
+
+    <div class="note-body">
+        <p>受験生の皆さん、衝撃の事実をお伝えします。</p>
+        <blockquote>東大二次試験の合格最低点は、約57-61%。つまり6割取れば受かる試験です。そしてもう一つ。あなたが今やっている蛍光ペンのハイライト、科学的にはほぼ効果ゼロです。</blockquote>
+
+        <div class="img-placeholder">[見出し画像: 勉強・データ分析イメージ]</div>
+
+        <h2>なるほど①：科学的勉強法ランキング</h2>
+        <p><strong>Tier S：アクティブリコール</strong> — 記憶定着率50-150%向上...</p>
+        <p><strong>Tier S：間隔反復</strong> — 一夜漬けと比較して200%以上向上...</p>
+        <p><em>（概要のみ。具体的なやり方は有料部分で...）</em></p>
+
+        <h2>なるほど②：睡眠8時間が最強の勉強法</h2>
+        <p>6時間睡眠が2週間続くと、48時間徹夜と同等の認知低下...</p>
+        <p><em>（データのみ。最適スケジュールは有料部分で...）</em></p>
+
+        <div class="paid-wall">
+            <h3>🔒 ここから有料パート</h3>
+            <p>3年間の月別ロードマップ、科目別参考書ルート、科学的勉強法の具体的やり方、最強の日課スケジュール、部活との両立法、メンタル管理、試験当日戦略...全て公開</p>
+            <div class="price">¥500</div>
+        </div>
+
+        <p style="color:#999;font-size:13px;text-align:center;">（有料部分の内容はnoteで購入後に表示されます）</p>
+
+        <div class="note-tags">
+            <span class="note-tag">#東大</span>
+            <span class="note-tag">#勉強法</span>
+            <span class="note-tag">#受験戦略</span>
+            <span class="note-tag">#科学的勉強法</span>
+            <span class="note-tag">#Pokano</span>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="status-bar">
+    <strong>noteプレビュー</strong> — 実際のnoteの表示とは若干異なります。コピペ用テキストはダッシュボードの各記事タスクから取得してください。
+</div>
+
+<script>
+function showTab(id) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
