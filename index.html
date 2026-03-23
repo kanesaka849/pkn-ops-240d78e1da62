@@ -1325,7 +1325,7 @@ NASAが長距離飛行パイロットで研究。
             </div>
 
             <!-- note -->
-            <div id="love-note" class="tab-panel" style="display:none;">
+            <div id="love-note" class="tab-panel">
                 <div class="sub-header">📝 note記事 <span class="badge badge-todo">有料500円・未投稿</span></div>
                 <p style="font-size:16px;font-weight:700;">タイトル：絶対叶える恋まじない AIに徹底調査させてみた</p>
                 <p style="font-size:14px;color:var(--text-dim);">ファイル：content/love_spells/note_plaintext.txt</p>
@@ -1348,7 +1348,7 @@ NASAが長距離飛行パイロットで研究。
             </div>
 
             <!-- X -->
-            <div id="love-x" class="tab-panel" style="display:none;">
+            <div id="love-x" class="tab-panel">
                 <div class="sub-header">𝕏 Xスレッド・ツイート <span class="badge badge-ok">OK待ち</span></div>
                 <p style="font-size:15px;">スレッド2本 + 単体ツイート4本</p>
                 <p style="font-size:14px;color:var(--text-dim);">ファイル：content/love_spells/x_threads.md</p>
@@ -1356,7 +1356,7 @@ NASAが長距離飛行パイロットで研究。
             </div>
 
             <!-- TikTok -->
-            <div id="love-tiktok" class="tab-panel" style="display:none;">
+            <div id="love-tiktok" class="tab-panel">
                 <div class="sub-header">📱 TikTok動画 <span class="badge badge-done">生成済み → 手動投稿待ち</span></div>
                 <p style="font-size:15px;font-weight:700;">動画3本（手動投稿・音楽追加が必要）：</p>
                 <div style="margin:8px 0;">
@@ -1383,7 +1383,7 @@ NASAが長距離飛行パイロットで研究。
             </div>
 
             <!-- Instagram -->
-            <div id="love-instagram" class="tab-panel" style="display:none;">
+            <div id="love-instagram" class="tab-panel">
                 <div class="sub-header">📸 Instagram <span class="badge" style="background:#fce7f3;color:#ec4899;">最優先・カルーセル2セット+ストーリーズ</span></div>
                 <p style="font-size:16px;font-weight:700;color:#ec4899;">※インスタはこの記事が最初の投稿！第一印象を決める。</p>
                 <div style="margin:12px 0;">
@@ -4071,7 +4071,12 @@ function switchTab(article, tab) {
     // Deactivate all tabs and panels in this article
     const tabBar = document.getElementById(article + '-tabs');
     tabBar.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    const panels = ['github','note','x','tiktok','youtube'];
+    const panels = ['github','note','x','tiktok','youtube','instagram'];
+    // Deactivate all panels and tab buttons for this article
+    const accordion = document.getElementById('acc-' + article) || document.querySelector('[id*="' + article + '"]');
+    if (accordion) {
+        accordion.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    }
     panels.forEach(p => {
         const el = document.getElementById(article + '-' + p);
         if (el) el.classList.remove('active');
