@@ -515,6 +515,57 @@
     </details>
 </div>
 
+<div class="section-title">蓄積ノウハウ一覧（15種類）</div>
+<div class="card">
+    <table class="pipeline">
+        <tr><th>#</th><th>ノウハウ</th><th>内容</th><th>鮮度</th></tr>
+        <tr><td>1</td><td><strong>リール/TikTok動画制作</strong></td><td>デザイン・コンテンツ・BGM・アルゴリズム</td><td>2026-03</td></tr>
+        <tr><td>2</td><td><strong>note記事制作</strong></td><td>構成・装飾・有料設計・SEO・バズる共通点</td><td>2026-03</td></tr>
+        <tr><td>3</td><td><strong>画像制作の最適解</strong></td><td>Pillow/Matplotlib/OpenAI/Napkin選定</td><td>2026-03</td></tr>
+        <tr><td>4</td><td><strong>バズるテーマの選び方</strong></td><td>ジャンルデータ・候補リスト</td><td>2026-03</td></tr>
+        <tr><td>5</td><td><strong>品質チェック体制</strong></td><td>27カテゴリ・244チェック（check_all.py）</td><td>2026-03</td></tr>
+        <tr><td>6</td><td><strong>投稿戦略</strong></td><td>時間・頻度・ハッシュタグ・クロスポスト</td><td>2026-03</td></tr>
+        <tr><td>7</td><td><strong>コンプライアンス</strong></td><td>規約・著作権・AI開示・薬機法</td><td>2026-03</td></tr>
+        <tr><td>8</td><td><strong>SEO検索最適化</strong></td><td>TikTok/YouTube キーワード戦略</td><td>2026-03</td></tr>
+        <tr><td>9</td><td><strong>コンテンツ再利用+SOP</strong></td><td>6フェーズ26ステップの業務手順</td><td>2026-03</td></tr>
+        <tr><td>10</td><td><strong>KPI分析</strong></td><td>完了率・保存率・シェア率の目標値</td><td>2026-03</td></tr>
+        <tr><td>11</td><td><strong>キーワード調査</strong></td><td>ツール・ワークフロー</td><td>2026-03</td></tr>
+        <tr><td>12</td><td><strong>アイキャッチ・マスコット</strong></td><td>7原則・子豚キャラ・画像配置ルール</td><td>2026-03</td></tr>
+        <tr><td>13</td><td><strong>コメント返し・コミュニティ</strong></td><td>1時間ルール・動画返信・X リプライ価値</td><td>2026-03</td></tr>
+        <tr><td>14</td><td><strong>Instagram専用</strong></td><td>アルゴリズム・リール/カルーセル/ストーリー・プロフィール</td><td>2026-03</td></tr>
+        <tr><td>15</td><td><strong>YouTube Shorts専用</strong></td><td>SEO優位性・ハッシュタグ・説明文・BGM</td><td>2026-03</td></tr>
+    </table>
+    <p style="font-size:13px;color:var(--text-dim);margin-top:8px;">鮮度チェック: 毎月1日に「ノウハウの鮮度チェックして」と依頼 → Claudeが最新情報調査・更新</p>
+</div>
+
+<div class="section-title">品質チェック項目（27カテゴリ・244チェック）</div>
+<div class="card">
+    <table class="pipeline">
+        <tr><th>区分</th><th>カテゴリ</th><th>内容</th></tr>
+        <tr><td rowspan="3">基本</td><td>file_exists</td><td>ファイル存在</td></tr>
+        <tr><td>forbidden</td><td>禁止表現（させた系・人間目線等）</td></tr>
+        <tr><td>compliance</td><td>薬機法・NGワード・著作権・透かし</td></tr>
+        <tr><td rowspan="3">HTML</td><td>title_match</td><td>タイトル整合性（title/OGP/JSON-LD）</td></tr>
+        <tr><td>brand</td><td>ブランド要素（og:site_name/twitter:site等）</td></tr>
+        <tr><td>url_consistency</td><td>URL整合性（canonical/og:url vs config）</td></tr>
+        <tr><td rowspan="5">コンテンツ</td><td>json_brand / note_brand</td><td>ブランドハンドル @pokano_ai</td></tr>
+        <tr><td>landing</td><td>ランディングページ（タイトル・URL・SNSリンク）</td></tr>
+        <tr><td>price</td><td>価格整合性（config vs サイト vs ダッシュボード）</td></tr>
+        <tr><td>completeness</td><td>コンテンツ網羅性（html/note/video/carousel揃っているか）</td></tr>
+        <tr><td>cross_platform_url</td><td>旧URL残りチェック</td></tr>
+        <tr><td rowspan="5">動画</td><td>video_design</td><td>秒数3秒・動画長21-34秒・枚数</td></tr>
+        <tr><td>video_hook</td><td>フック≠タイトル繰り返し・疑問/数字</td></tr>
+        <tr><td>video_cta</td><td>CTA（@pokano_ai/フォロー/プロフィール）</td></tr>
+        <tr><td>video_text</td><td>1行16文字以内</td></tr>
+        <tr><td>accessibility</td><td>色コントラスト比4.5:1（WCAG基準）</td></tr>
+        <tr><td rowspan="4">カルーセル・X</td><td>carousel_brand / carousel_cta</td><td>ブランド・CTA最終スライド</td></tr>
+        <tr><td>x_thread</td><td>ハッシュタグ・ハンドル</td></tr>
+        <tr><td>hashtag</td><td>TikTokキャプションにハッシュタグ</td></tr>
+        <tr><td>note_quality</td><td>タイトル数字・段落長・見出し間隔・画像・有料ライン位置・ボス言及</td></tr>
+    </table>
+    <p style="font-size:13px;color:var(--text-dim);margin-top:8px;">実行: <code>cd quality-check && python check_all.py</code> → FAIL=0で公開OK</p>
+</div>
+
 <div class="section-title">次の記事テーマ候補（バズるネタ帳）</div>
 <div class="card" style="border-left:4px solid var(--gold);">
     <div class="sub-header">💡 Pokano × AIで分析 — バズるテーマ候補</div>
