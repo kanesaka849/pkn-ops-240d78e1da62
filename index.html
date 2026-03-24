@@ -279,19 +279,62 @@
 <!-- ARTICLE ACCORDIONS -->
 <!-- ============================================================ -->
 
-<div class="section-title">記事作成ワークフロー</div>
+<div class="section-title">記事作成ワークフロー（完全版SOP）</div>
 <div class="card" style="border-left:4px solid #10b981;">
-    <div class="sub-header">🔄 新記事を作るときの手順</div>
-    <ol class="step-list">
-        <li><strong>テーマ候補を決める</strong> — 下の「バズるネタ帳」から選ぶ</li>
-        <li><strong>キーワード調査</strong> — 検索ボリュームを確認してタイトルに反映（↓ツール参照）</li>
-        <li><strong>タイトル決定</strong> — 結論+数字+検索キーワード+32文字以内</li>
-        <li><strong>note記事執筆</strong> — 「記事作成ノウハウ」セクション参照</li>
-        <li><strong>LP作成</strong>（GitHub Pages）</li>
-        <li><strong>動画・カルーセル・Xスレッド作成</strong></li>
-        <li><strong>check_all.py実行</strong>（226チェック・25カテゴリ）</li>
-        <li><strong>公開・X拡散</strong>（ゴールデンタイム20-21時に引用リポスト）</li>
-    </ol>
+    <div class="sub-header">🔄 新記事を作るときの手順（全20ステップ）</div>
+
+    <details open>
+        <summary>Phase 1: 企画（テーマ決め〜タイトル確定）</summary>
+        <ol class="step-list" style="margin-top:8px;">
+            <li><strong>テーマ候補を決める</strong> — 下の「バズるネタ帳」から選ぶ</li>
+            <li><strong>キーワード調査</strong> — ラッコキーワード/Ubersuggest/Googleトレンドで検索ボリューム確認</li>
+            <li><strong>タイトル決定</strong> — 結論+数字+検索キーワード+32文字以内。「AIが○○本読んだ」フォーマット</li>
+            <li><strong>コンプライアンス事前チェック</strong> — テーマに薬機法/景表法リスクがないか確認（健康/ダイエット系は特に注意）</li>
+        </ol>
+    </details>
+
+    <details>
+        <summary>Phase 2: 記事制作（note記事+LP）</summary>
+        <ol class="step-list" start="5" style="margin-top:8px;">
+            <li><strong>note記事執筆</strong> — PREP法+黄金構成5ステップ。AI目線で統一。ボスのボケ挿入</li>
+            <li><strong>有料ライン設計</strong>（有料記事の場合）— 無料部分30-50%。「続きが知りたい」ピークで切る</li>
+            <li><strong>記事内画像作成</strong> — 見出し画像+図解+マスコット。350-500文字ごとに1枚。Pillow/OpenAI API</li>
+            <li><strong>アイキャッチ画像作成</strong> — 7原則準拠（高コントラスト/3語/数字/補色）。子豚マスコット配置</li>
+            <li><strong>note plaintext版作成</strong> — 【見出し】【太字】【区切り線】【画像】マーカー付き</li>
+            <li><strong>LP（GitHub Pages）作成</strong> — 白基調デザイン。OGP/JSON-LD/FAQ Schema設定</li>
+        </ol>
+    </details>
+
+    <details>
+        <summary>Phase 3: 展開コンテンツ制作（動画・カルーセル・Xスレッド）</summary>
+        <ol class="step-list" start="11" style="margin-top:8px;">
+            <li><strong>TikTok動画JSON作成</strong>（3-5本）— フック型スライド1。3秒/枚。21-34秒。記事別アクセントカラー</li>
+            <li><strong>動画生成</strong> — <code>python generate_video.py slides.json</code>（BGMなし。TikTok/IGはアプリで後付け）</li>
+            <li><strong>YouTube Shorts用動画生成</strong> — <code>python generate_video.py slides.json --bgm bgm.mp3</code>（BGM焼き付け）</li>
+            <li><strong>Instagramカルーセル作成</strong>（2本）— CTA最終スライド必須。@pokano_ai含む</li>
+            <li><strong>Instagramストーリー作成</strong>（1本）</li>
+            <li><strong>Xスレッド作成</strong>（3本+単発ツイート）— ハッシュタグ3-5個。@pokano_ai含む</li>
+        </ol>
+    </details>
+
+    <details>
+        <summary>Phase 4: チェック・公開・拡散</summary>
+        <ol class="step-list" start="17" style="margin-top:8px;">
+            <li><strong>check_all.py実行</strong> — 全25カテゴリ・226+チェック。FAIL=0になるまで修正</li>
+            <li><strong>pokano_config.json更新</strong> — 新記事のタイトル・URL・価格・ファイルパスを追加</li>
+            <li><strong>公開</strong> — note投稿 → GitHub Pagesプッシュ → 公式サイト更新 → ダッシュボード更新</li>
+            <li><strong>拡散</strong> — X引用リポスト（20-21時）→ TikTok投稿（トレンド音源追加）→ IG Reels → YouTube Shorts</li>
+        </ol>
+    </details>
+
+    <details>
+        <summary>Phase 5: 公開後（KPI分析・改善）</summary>
+        <ol class="step-list" start="21" style="margin-top:8px;">
+            <li><strong>48時間以内:</strong> 各動画の完了率・保存率・シェア率を確認</li>
+            <li><strong>週次:</strong> コンテンツKPIレビュー。完了率70%未満の動画はフック変更を検討</li>
+            <li><strong>月次:</strong> 全体戦略レビュー + ノウハウ鮮度チェック</li>
+        </ol>
+    </details>
     <details style="margin-top:10px;">
         <summary>キーワード調査ツール一覧</summary>
         <table class="pipeline" style="margin-top:8px;">
