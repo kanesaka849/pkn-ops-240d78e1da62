@@ -318,20 +318,53 @@
     </details>
 
     <details>
-        <summary>Phase 4: チェック・公開・拡散</summary>
-        <ol class="step-list" start="17" style="margin-top:8px;">
-            <li><strong>check_all.py実行</strong> — 全25カテゴリ・226+チェック。FAIL=0になるまで修正</li>
+        <summary>Phase 4: 成果物チェック（公開前）</summary>
+        <div style="margin-top:8px;padding:12px;background:rgba(239,68,68,0.04);border:1px solid rgba(239,68,68,0.15);border-radius:10px;">
+            <p style="font-weight:700;color:#ef4444;margin-bottom:8px;">🔍 ノウハウ準拠チェック（公開前に必ず確認）</p>
+            <table class="pipeline">
+                <tr><th>対象</th><th>チェック内容</th><th>参照ノウハウ</th></tr>
+                <tr><td><strong>note記事</strong></td><td>タイトルに数字+32文字以内 / 冒頭50文字でフック / PREP構成 / 1段落3-4行 / 見出し200-400字ごと / 画像350-500文字ごと / 有料ライン30-50%</td><td>note記事制作</td></tr>
+                <tr><td><strong>動画JSON</strong></td><td>フック≠タイトル繰り返し / 3秒/枚 / 21-34秒 / CTA最終スライド / 1行12文字 / @pokano_ai</td><td>リール動画制作</td></tr>
+                <tr><td><strong>カルーセル</strong></td><td>CTA最終スライド / @pokano_ai / ブランドカラー統一</td><td>リール動画制作</td></tr>
+                <tr><td><strong>Xスレッド</strong></td><td>ハッシュタグ3-5個 / @pokano_ai / AI目線統一</td><td>投稿戦略</td></tr>
+                <tr><td><strong>アイキャッチ</strong></td><td>3語以内 / 数字あり / 高コントラスト / 子豚マスコット / サイズ正しい</td><td>アイキャッチ戦略</td></tr>
+                <tr><td><strong>コンプライアンス</strong></td><td>薬機法表現なし / NGワードなし / 著作権引用OK / AI開示</td><td>コンプライアンス</td></tr>
+                <tr><td><strong>SEO</strong></td><td>キーワードがキャプション・テキストに自然に含まれている</td><td>SEO最適化</td></tr>
+            </table>
+        </div>
+        <ol class="step-list" start="17" style="margin-top:12px;">
+            <li><strong>check_all.py実行</strong> — 全25カテゴリ。FAIL=0になるまで修正</li>
+            <li><strong>目視チェック</strong> — 上の表を見ながら、自動チェックで拾えない部分を確認</li>
             <li><strong>pokano_config.json更新</strong> — 新記事のタイトル・URL・価格・ファイルパスを追加</li>
-            <li><strong>公開</strong> — note投稿 → GitHub Pagesプッシュ → 公式サイト更新 → ダッシュボード更新</li>
-            <li><strong>拡散</strong> — X引用リポスト（20-21時）→ TikTok投稿（トレンド音源追加）→ IG Reels → YouTube Shorts</li>
         </ol>
     </details>
 
     <details>
-        <summary>Phase 5: 公開後（KPI分析・改善）</summary>
-        <ol class="step-list" start="21" style="margin-top:8px;">
+        <summary>Phase 5: 公開・拡散</summary>
+        <ol class="step-list" start="20" style="margin-top:8px;">
+            <li><strong>公開</strong> — note投稿 → GitHub Pagesプッシュ → 公式サイト更新 → ダッシュボード更新</li>
+            <li><strong>拡散</strong> — X引用リポスト（20-21時）→ TikTok投稿（トレンド音源追加）→ IG Reels → YouTube Shorts</li>
+            <li><strong>Xセルフリプライ</strong> — 投稿後10分以内に補足情報をツリーで追加（リプライ=いいねの30-75倍のスコア）</li>
+        </ol>
+    </details>
+
+    <details>
+        <summary>Phase 6: 公開後（コメント対応・KPI分析）</summary>
+        <div style="margin-top:8px;padding:12px;background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.15);border-radius:10px;">
+            <p style="font-weight:700;color:#10b981;margin-bottom:8px;">💬 コメント対応ルール</p>
+            <table class="pipeline">
+                <tr><th>タイミング</th><th>やること</th><th>効果</th></tr>
+                <tr><td><strong>投稿後1時間</strong></td><td>全コメントに返信（最優先）</td><td>アルゴリズム「アクティブクリエイター」シグナル</td></tr>
+                <tr><td><strong>毎朝20分</strong></td><td>前日夜のコメント確認・返信</td><td>継続的なエンゲージメント維持</td></tr>
+                <tr><td><strong>毎昼20分</strong></td><td>午前中のコメント確認・返信</td><td>会話ループでアルゴリズム評価UP</td></tr>
+                <tr><td><strong>質問コメント</strong></td><td>TikTok「動画で返信」機能で回答</td><td>新コンテンツ化 + 元動画への誘導</td></tr>
+            </table>
+            <p style="margin-top:8px;font-size:14px;color:var(--text-dim);">X: リプライ=+50点 / リポスト=+20点 / いいね=+1点。返信が最も価値が高い</p>
+        </div>
+        <ol class="step-list" start="23" style="margin-top:12px;">
+            <li><strong>投稿後1時間:</strong> 全プラットフォームのコメントに返信</li>
             <li><strong>48時間以内:</strong> 各動画の完了率・保存率・シェア率を確認</li>
-            <li><strong>週次:</strong> コンテンツKPIレビュー。完了率70%未満の動画はフック変更を検討</li>
+            <li><strong>週次:</strong> コンテンツKPIレビュー。完了率70%未満→フック変更検討</li>
             <li><strong>月次:</strong> 全体戦略レビュー + ノウハウ鮮度チェック</li>
         </ol>
     </details>
