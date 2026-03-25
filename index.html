@@ -355,14 +355,14 @@
         document.querySelectorAll('#versionTable tbody tr').forEach(function(row) {
             var noteCell = row.querySelector('.v-note');
             if (!noteCell) return;
-            var noteVer = noteCell.textContent.trim();
+            var noteVer = noteCell.textContent.trim().split('\n')[0].trim();
             var noteColor = getColor(noteVer);
             noteCell.style.color = noteColor;
             noteCell.style.fontWeight = '700';
             noteCell.style.background = 'rgba(255,255,255,0.05)';
 
             row.querySelectorAll('.v-cell').forEach(function(cell) {
-                var ver = cell.textContent.trim();
+                var ver = cell.textContent.trim().split('\n')[0].trim();
                 var c = getColor(ver);
                 cell.style.color = c;
                 cell.style.fontWeight = '700';
